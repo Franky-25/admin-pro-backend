@@ -14,16 +14,14 @@ app.use( cors() );
 // Base de datos
 dbConnection();
 
+// Lectura y parseo del json
+app.use( express.json() );
+
 
 // Rutas
-app.get( '/', (req, res) => {
+app.use('/api/usuarios', require('./routes/usuarios') );
+app.use('/api/login', require('./routes/auth') );
 
-    res.json({
-        ok: true,
-        msg: 'Hola Mundo'
-    });
-
-});
 
 
 app.listen( process.env.PORT, () => {
